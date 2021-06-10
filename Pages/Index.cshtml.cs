@@ -11,6 +11,8 @@ namespace ld_sample_app.Pages
 {
     public class IndexModel : PageModel
     {
+        private const string FF_DONATE_BUTTON_ON_RIGHT_KEY = "donate-button-on-right";
+
         private readonly ILdClient _ldClient;
         private readonly ILogger<IndexModel> _logger;
 
@@ -31,7 +33,7 @@ namespace ld_sample_app.Pages
             User user = LaunchDarkly.Sdk.User.Builder(Guid.NewGuid().ToString())
                 .Anonymous(true)
                 .Build();
-            FF_DONATE_BUTTON_ON_RIGHT = _ldClient.BoolVariation("donate-button-on-right", user, false);
+            FF_DONATE_BUTTON_ON_RIGHT = _ldClient.BoolVariation(FF_DONATE_BUTTON_ON_RIGHT_KEY, user, false);
             //_logger.LogInformation("Feature flag is {flag-value}", FF_DONATE_BUTTON_ON_RIGHT);
 
             return Page();
