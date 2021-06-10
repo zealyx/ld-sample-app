@@ -1,0 +1,33 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Online Donation";
+}
+
+<h1>Online Donation</h1>
+<h4>Thank you for supporting the LD Sample Project!</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Donation.Amount" class="control-label"></label>
+                <input asp-for="Donation.Amount" class="form-control" />
+            </div>
+            @if (Model.FF_DONATE_BUTTON_ON_RIGHT)
+            {
+                <div class="form-group">
+                    <a asp-page="Index">Cancel</a>&nbsp;
+                    <input type="submit" value="Donate" class="btn btn-primary" />
+                </div>
+            }
+            else
+            {
+                <div class="form-group">
+                    <input type="submit" value="Donate" class="btn btn-primary" />&nbsp;
+                    <a asp-page="Index">Cancel</a>
+                </div>
+            }
+        </form>
+    </div>
+</div>
